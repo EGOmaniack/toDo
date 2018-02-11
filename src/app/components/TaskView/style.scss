@@ -1,0 +1,48 @@
+.com-task-wrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    
+    .com-task-card {
+        width: 80%;
+        min-height: 250px;
+        background-color: white;
+        margin: 25px auto 0;
+        padding-bottom: 20px; 
+    }
+
+    input.label {
+        height: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        display: block;
+        width: 200px;
+        margin: 0 auto;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        outline: none;
+    }
+    textarea.label {
+        height: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        display: block;
+        width: 80%;
+        min-width: 80%;
+        max-width: 80%;
+        height: 125px;
+        min-height: 125px;
+        margin: 0 auto;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        outline: none;
+    }
+    button {
+        display: block;
+        margin: 20px auto 0;
+    }
+
+}
