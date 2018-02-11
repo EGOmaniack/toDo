@@ -8,26 +8,71 @@ class ToDo extends React.PureComponent {
 
     constructor(props) {
         super(props);
+
         this.addTask = this.addTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
         this.toggleTaskDone = this.toggleTaskDone.bind(this);
         this.openTask = this.openTask.bind(this);
+        this.closeTask = this.closeTask.bind(this);
+        this.editTaskLabel = this.editTaskLabel.bind(this);
+        this.toggleTaskEditeMode = this.toggleTaskEditeMode.bind(this);
+        this.editTaskBody = this.editTaskBody.bind(this);
+        this.toggleSortingDirection = this.toggleSortingDirection.bind(this);
+
         this.state = {
             tasks: localStorage.getItem('tasks') && JSON.parse(localStorage.getItem('tasks')) || [],
-            openedTask: {
-                id: 888,
-                label: 'label',
-                taskBody: 'body',
-                done: false
-            },
-            editOpenedTask: false
+            openedTask: null,
+            editOpenedTask: true,
+            labelSortUp: true
         }
     }
 
-    openTask(task) {
-        this.setState({openedTask: task});
+    toggleSortingDirection() {
+        this.setState({labelSortUp: !this.state.labelSortUp});
     }
 
+    editTaskLabel({target: {value}}) {
+        this.setState({openedTask: {
+            id: this.state.openedTask.id,
+            label: value,
+            taskBody: this.state.openedTask.taskBody,
+            done: this.state.openedTask.done
+        }});
+    }
+    
+    editTaskBody({target: {value}}) {
+        this.setState({openedTask: {
+            id: this.state.openedTask.id,
+            label: this.state.openedTask.label,
+            taskBody: value,
+            done: this.state.openedTask.done
+        }});
+    }
+
+    closeTask(save) {
+        let tasks = this.state.tasks;
+        let tasks2 = tasks.map((task)=>{
+            if(save && task.id == this.state.openedTask.id) {
+                task = this.state.openedTask;
+            }
+            return task;
+        });
+
+        localStorage.setItem('tasks', JSON.stringify(tasks2));
+        this.setState({
+            openedTask: null,
+            tasks: tasks2
+        });
+    }
+
+    openTask(task, edit) {
+        this.setState({openedTask: task, editOpenedTask: edit});
+    }
+
+    toggleTaskEditeMode() {
+        this.setState({ editOpenedTask: !this.state.editOpenedTask})
+    }
+    
     toggleTaskDone(taskId) {
         let tasks = this.state.tasks;
 
@@ -42,7 +87,7 @@ class ToDo extends React.PureComponent {
         this.setState({tasks});
     }
 
-    addTask(taskLabel, taskBody) {
+    addTask(taskLabel) {
         let tasks = this.state.tasks;
 
         let newId = localStorage.getItem('id') && parseInt(localStorage.getItem('id')) || 0;
@@ -53,7 +98,7 @@ class ToDo extends React.PureComponent {
         let newTask = {
             id: newId,
             label: taskLabel,
-            taskBody,
+            taskBody: '',
             done: false
         };
 
@@ -80,8 +125,17 @@ class ToDo extends React.PureComponent {
                     deleteTask={this.deleteTask}
                     toggleTaskDone={this.toggleTaskDone}
                     openTask={this.openTask}
+                    labelSortingUp={this.state.labelSortUp}
+                    toggleSortingDirection={this.toggleSortingDirection}
                 />
-                {this.state.openedTask && <TaskView edit={this.state.editOpenedTask} task={this.state.openedTask} />}
+                {this.state.openedTask && <TaskView
+                        edit={this.state.editOpenedTask}
+                        task={this.state.openedTask}
+                        toggleTaskEditeMode={this.toggleTaskEditeMode}
+                        closeTask={this.closeTask}
+                        editTaskLabel={this.editTaskLabel}
+                        editTaskBody={this.editTaskBody}
+                    />}
             </React.Fragment>
         );
     }

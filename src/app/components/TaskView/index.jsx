@@ -4,25 +4,32 @@ import * as Dictionary from '../../constants/dictionary';
 import './style.scss';
 
 export const TaskView = (props) => {
-    let { task, edit } = props;
+    let { task, edit, toggleTaskEditeMode, closeTask, editTaskLabel, editTaskBody } = props;
+
+    let handleClose = ({target}) => {
+        if(target.id === 'modal-black-bg') {
+            closeTask(false);
+        }
+    }
+
     return (
-        <div className="com-task-wrapper">
+        <div id="modal-black-bg" className="com-task-wrapper" onClick={handleClose}>
             <div className="com-task-card">
                 <input
                     className={!edit ? 'label' : 'editable'}
                     disabled={!edit}
                     type="text"
                     value={task.label}
-                    onChange={()=>console.log(111)}
+                    onChange={editTaskLabel}
                 />
                 <textarea
                     className={!edit ? 'label' : 'editable'}
                     disabled={!edit}
-                    value={task.taskBody}
-                    onChange={()=>console.log(222)}
+                    defaultValue={task.taskBody}
+                    onChange={editTaskBody}
                 />
-                {edit && <button>{Dictionary.SAVE}</button>}
-                {!edit && <button>{Dictionary.CHANGE}</button>}
+                {edit && <button onClick={() => closeTask(true)}>{Dictionary.SAVE}</button>}
+                {!edit && <button onClick={toggleTaskEditeMode}>{Dictionary.CHANGE}</button>}
             </div>
         </div>
     );
