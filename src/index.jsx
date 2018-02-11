@@ -1,9 +1,10 @@
-import './app.scss';
 import {render} from 'react-dom';
 import React from 'react';
 
+import App from './app/containers/toDo.jsx';
+import './style.scss';
 
 render(
-  <h1>Hello, world!</h1>,
+  <App />,
   document.getElementById('root')
 );
