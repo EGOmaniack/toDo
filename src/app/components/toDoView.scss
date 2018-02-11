@@ -1,0 +1,13 @@
+.view-card {
+    width: 80%;
+    min-height: 500px;
+    margin: 20px auto 0;
+
+    .del-icon {
+        height: 16px;
+    }
+}
+.touchable {
+    cursor: pointer;
+    user-select: none;
+}
