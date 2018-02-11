@@ -1,0 +1,28 @@
+.com-ntask {
+    width: 280px;
+    margin: 0 auto;
+    padding-top: 15px;
+
+    input {
+        padding-left: 10px;
+        height: 30px;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.25);
+    }
+
+    input:focus {
+        outline: none;
+        border-bottom: 2px solid rgba(17, 17, 192, 0.979);
+    }
+
+    button {
+        font-family: 'Roboto', sans-serif;
+        float: right;
+        background-color: #404AFD;
+        height: 30px;
+        border: none;
+        color: white;
+        border-radius: 3px;
+        padding: 0 10px;
+    }
+}

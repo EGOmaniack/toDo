@@ -1,0 +1,19 @@
+.comp-t-cell {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.8125rem;
+    text-align: left;
+    border-top: 1px solid rgba(224, 224, 224, 1);
+}
+
+.comp-t-head-cell {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: left;
+    border-top: none;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #929191;
+}
