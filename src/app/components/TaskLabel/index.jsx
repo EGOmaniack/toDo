@@ -15,8 +15,8 @@ export class TaskLabel extends React.PureComponent {
 
         return (
             <span className={`com-tlabel ${className}`}>
-                {label}
-                <img src={editIcon} />
+                <span onClick={() => this.props.openTask(false)}>{label}</span>
+                <img  onClick={() => this.props.openTask(true)} src={editIcon} />
             </span>
         );
     }

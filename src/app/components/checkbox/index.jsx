@@ -11,7 +11,7 @@ export const Checkbox = (props) => {
             type="checkbox"
             checked={checked}
             id={id}
-            onChange={()=>console.info(111)}
+            onChange={props.action}
         />
     );
 };

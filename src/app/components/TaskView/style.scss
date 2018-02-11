@@ -1,0 +1,69 @@
+.com-task-wrapper {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    
+    .com-task-card {
+        width: 80%;
+        min-height: 250px;
+        background-color: white;
+        margin: 25px auto 0;
+        padding-bottom: 20px; 
+    }
+    
+    input {
+        font-family: 'Roboto', sans-serif;
+        display: block;
+        color: black;
+        font-size: 18px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 3px;
+        border: none;
+        outline: none;
+    }
+
+    textarea {
+        display: block;
+        height: 50px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        width: 80%;
+        min-width: 80%;
+        max-width: 80%;
+        height: 125px;
+        min-height: 125px;
+        margin: 0 auto;
+        padding: 15px 5px 5px;
+        border-top: 2px solid rgba(0,0,0,0.25);
+        outline: none;
+    }
+
+    input.label {
+        background-color: rgba(0,0,0,0);
+        height: 50px;
+    }
+
+    input.editable {
+        border-bottom: 2px solid rgba(23, 23, 23, 0.979);
+        margin-bottom: 7px;
+        padding-top: 15px;
+        height: 20px;
+    }
+    input:focus {
+        border-bottom: 2px solid rgba(17, 17, 192, 0.979);
+    }
+
+    textarea.label {
+        border: none;
+        background-color: rgba(0,0,0,0);
+    }
+    button {
+        display: block;
+        margin: 20px auto 0;
+    }
+
+}
