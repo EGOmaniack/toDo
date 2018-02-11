@@ -23,7 +23,7 @@ export const View = (props) => {
     
     let sortedTasks = tasks.sort((task1, task2)=>{
         let k = labelSortingUp ? 1 : -1;
-        return (task1.label > task2.label) ? 1 * k : ((task2.label > task1.label) ? -1 * k : 0)
+        return (task1.label > task2.label) ? -1 * k : ((task2.label > task1.label) ? 1 * k : 0)
     });
 
     return (
@@ -31,7 +31,14 @@ export const View = (props) => {
             <Table>
                 <TableHead>
                     <TableCell>{Dictionary.DONE}</TableCell>
-                    <TableCell><span className="touchable" onClick={toggleSortingDirection}>{Dictionary.LABEL}</span></TableCell>
+                    <TableCell>
+                        <span
+                            className="touchable"
+                            onClick={toggleSortingDirection}
+                        >{Dictionary.LABEL}
+                            <i className={`arrow ${labelSortingUp ? 'up' : 'down'}`}></i>
+                        </span>
+                    </TableCell>
                     <TableCell>{Dictionary.DEL}</TableCell>
                 </TableHead>
                 <TableBody>
