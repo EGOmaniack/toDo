@@ -11,3 +11,18 @@
     cursor: pointer;
     user-select: none;
 }
+i.arrow {
+    margin-left: 10px;
+    border: solid rgba(0, 0, 0, 0.6);;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+i.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+i.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
